@@ -1,0 +1,16 @@
+body{
+    margin: 0;
+    font-family: 'Palanquin';
+}
+
+:root {
+    --primary-bg: #E76C1F;
+    --secondary-bg: #363534;
+    --tertiary-bg: #726D6D;
+    /* --highlight-color: #0b6f8e;
+    --dialog-bg: #0D3240; */
+    --footer-bg: #E76C1F;
+    /* --border-radius: 20px;
+    --large-radius: 25px;
+    --transition-speed: 1000ms; */
+}
