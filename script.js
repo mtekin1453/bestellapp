@@ -14,44 +14,14 @@ async function includeHTML() {
 }
 
 
-async function init() {
+async function init(restaurantID) {
     await includeHTML();
 
-    renderCompanyData();
+    renderCompanyData(restaurantID);
 }
 
 
-// function renderCompanyData() {
-//     let content = document.getElementById('company-section');
-//     if (!content) return; // verhindert Crash
-
-//     // Prüfen ob Variable existiert UND ein Array ist
-//     if (typeof companyInformation === 'undefined' || !Array.isArray(companyInformation)) {
-//         content.innerHTML = 'Keine Firmendaten verfügbar';
-//         return;
-//     }
-
-//     // Prüfen ob Array leer ist
-//     if (companyInformation.length === 0) {
-//         content.innerHTML = 'Keine Firmendaten vorhanden';
-//         return;
-//     }
-
-//     const element = companyInformation[0];
-
-//     const name1 = element.name1;
-//     const name2 = element.name2;
-//     const rating = element.rating;
-//     const reviews = element.reviews;
-//     const logo = element.logo;
-//     const image = element.image;
-//     const slogan = element.slogan;
-
-//     content.innerHTML = renderCompanyHTML(name1, name2, rating, reviews, logo, image, slogan);
-
-// }
-
-function renderCompanyData() {
+function renderCompanyData(restaurantID) {
     let content = document.getElementById('company-section');
     if (!content) return; // verhindert Crash
 
@@ -67,7 +37,11 @@ function renderCompanyData() {
         return;
     }
 
-    const element = databaseRestaurants[0];
+    const element = databaseRestaurants[restaurantID];
+    if (!element) {
+        content.innerHTML = 'Restaurant nicht gefunden';
+        return;
+    }
 
     const name1 = element.name1;
     const name2 = element.name2;
@@ -92,4 +66,4 @@ function renderCompanyData() {
 
 
 
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener('DOMContentLoaded', () => init(0));
