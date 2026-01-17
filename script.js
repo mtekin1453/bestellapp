@@ -22,25 +22,25 @@ async function init(restaurantID) {
 
 
 function renderCompanyData(restaurantID) {
-    let content = document.getElementById('company-section');
-    if (!content) return; // verhindert Crash
+    let companyContent = document.getElementById('company-section');
+    if (!companyContent) return; // verhindert Crash
 
     // Prüfen ob Variable existiert UND ein Array ist
     if (typeof databaseRestaurants === 'undefined' || !Array.isArray(databaseRestaurants)) {
-        content.innerHTML = 'Keine Firmendaten verfügbar';
+        companyContent.innerHTML = 'Keine Firmendaten verfügbar';
         return;
     }
 
     // Prüfen ob Array leer ist
     if (databaseRestaurants.length === 0) {
-        content.innerHTML = 'Keine Firmendaten vorhanden';
+        companyContent.innerHTML = 'Keine Firmendaten vorhanden';
         return;
     }
 
     const element = databaseRestaurants[restaurantID];
-    if (!element) {
-        content.innerHTML = 'Restaurant nicht gefunden';
-        return;
+    if (!element) { 
+        companyContent.innerHTML = 'Restaurant nicht gefunden';
+        return; // verhindert Crash
     }
 
     const name1 = element.name1;
@@ -51,7 +51,7 @@ function renderCompanyData(restaurantID) {
     const image = element.image;
     const slogan = element.slogan;
 
-    content.innerHTML = renderCompanyHTML(name1, name2, rating, reviews, logo, image, slogan);
+    companyContent.innerHTML = renderCompanyHTML(name1, name2, rating, reviews, logo, image, slogan);
 
 }
 
