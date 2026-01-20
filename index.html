@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./assets/icons/logo.png" type="image/png">
+    <link rel="icon" href="./assets/icons/takeaway.png" type="image/png">
     <title>BestellApp</title>
 
     <script src="./scripts/db.js"></script>
     <script src="./scripts/templates.js"></script>
     <script src="script.js"></script>
-    
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/categories.css">
+    <link rel="stylesheet" href="./styles/menus.css">
+    <link rel="stylesheet" href="./styles/basket.css">
 </head>
+
 <body>
 
     <!-- HEADER SECTION START -->
@@ -21,10 +26,65 @@
     <!-- HEADER SECTION END -->
 
     <!-- COMPANY SECTION START -->
-    <div id="company-section" class="company-section">
-        
-    </div>
+    <div id="company-section" class="company-section"></div>
     <!-- COMPANY SECTION END -->
- 
+
+    <!-- CATEGORIES SECTION START -->
+    <div id="categories-section" class="categories-section"></div>
+    <!-- CATEGORIES SECTION END -->
+
+
+    <!-- MENUS SECTION START -->
+
+    <div id="menus-section" class="menus-section">
+
+        <div id="menus-content" class="menus-content">
+
+            <div id="menus-list" class="menus-list">
+
+                <div id="menus-list-categories" class="menus-list-categories">
+                    <div class="menus-list-cat-container">
+                        <img src="./assets/icons/burger.png">
+                        <h2>Burger & Sandwiches</h2>
+                    </div>
+                </div>
+
+                <div id="menu1" class="menu">
+                    <div class="menu-detail-container">
+                        <div><img src="./assets/menus/margherita.png"></div>
+                        <div class="menu-name-container">
+                            <div class="menu-name-detail-container">
+                                <h3>Margherita</h3>
+                                <span>8,50 €</span>
+                            </div>
+                            <div>
+                                <p>Tomatensauce, Mozzarella, Basilikum</p>
+                            </div>
+                            <div class="add-to-basket-container">
+                                <button class="addToBasket">Add to Basket</button>
+                            </div>
+                            <div class="add-to-basket-container hidden">
+                                <button class="addedBasket">Added</button>
+                                <img src="./assets/icons/plus.png">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="basket-content" class="basket-content"></div>
+        </div>
+
+
+    </div>
+
+    <!-- MENUS SECTION END -->
+
+
+
+
 </body>
+
 </html>

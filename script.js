@@ -18,6 +18,39 @@ async function init(restaurantID) {
     await includeHTML();
 
     renderCompanyData(restaurantID);
+
+    collectCategorieNames(restaurantID);
+    storedCategorieNames = load('categorieNames');
+
+
+    if (storedCategorieNames.length > 0) {
+        categorieNames = storedCategorieNames;
+    } else {
+        save('categorieNames', categorieNames); // optional: Startdaten einmal speichern
+    }
+
+    renderCategories(restaurantID);
+
+}
+
+function renderCategories(restaurantID) {
+
+    let categoriesContent = document.getElementById('categories-section');
+    if (!categoriesContent) return; // verhindert Crash
+
+        // Prüfen ob Array leer ist
+    if (categorieNames.length === 0) {
+        categoriesContent.innerHTML = 'Keine Kategorien vorhanden';
+        return;
+    }
+
+    categoriesContent.innerHTML = '';
+    for (let i = 0; i < categorieNames.length; i++) {
+        const categoryName = categorieNames[i].name;
+        categoriesContent.innerHTML += listCategoriesHTML(restaurantID, i, categoryName);
+    }
+
+
 }
 
 
@@ -38,7 +71,7 @@ function renderCompanyData(restaurantID) {
     }
 
     const element = databaseRestaurants[restaurantID];
-    if (!element) { 
+    if (!element) {
         companyContent.innerHTML = 'Restaurant nicht gefunden';
         return; // verhindert Crash
     }
@@ -55,6 +88,42 @@ function renderCompanyData(restaurantID) {
 
 }
 
+
+function collectCategorieNames(restaurantID = 0) {
+    categorieNames = []; // reset
+
+    const menus = databaseRestaurants[restaurantID].menus;
+
+    for (let i = 0; i < menus.length; i++) {
+        const categoryObj = menus[i].categories; 
+        // { name, img }
+
+        // prüfen ob Kategorie mit diesem Namen schon existiert
+        const exists = categorieNames.some(
+            c => c.name === categoryObj.name
+        );
+
+        if (!exists) {
+            categorieNames.push({
+                name: categoryObj.name,
+                img: categoryObj.img
+            });
+        }
+    }
+
+    categorieNames = save('categorieNames', categorieNames);
+
+}
+
+
+function load(key) {
+    return JSON.parse(localStorage.getItem(key)) ?? [];
+}
+
+
+function save(key, array) {
+    localStorage.setItem(key, JSON.stringify(array));
+}
 
 
 

@@ -1,4 +1,4 @@
-function renderCompanyHTML(name1,name2,rating,reviews,logo,image,slogan){
+function renderCompanyHTML(name1, name2, rating, reviews, logo, image, slogan) {
     return `
     <div class="company-image-section"><img class="header-company-image" src=${image}></div>
         <div class="company-logo-section"><img src=${logo}></div>
@@ -17,5 +17,20 @@ function renderCompanyHTML(name1,name2,rating,reviews,logo,image,slogan){
                 <span id="slogan">${slogan}</span>
             </div>
     </div>
+    `;
+}
+
+function listCategoriesHTML(restaurantID, categoryID, categoryName) {
+    return `
+            <div id="restaurant-cat-${restaurantID}" class="category-icon-container">
+                <div>
+                        <img src="./assets/icons/right.png" class="category-icon">
+                </div>
+            <div class="category-card">
+                <div>
+                    <span id="categoriesName${categoryID}" class="categoriesName">${categoryName}</span>
+                </div>
+            </div>
+        </div>
     `;
 }

@@ -14,3 +14,7 @@ body{
     --large-radius: 25px;
     --transition-speed: 1000ms; */
 }
+
+.hidden {
+    display: none !important;
+}
