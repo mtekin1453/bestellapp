@@ -1,28 +1,28 @@
+.main-content {
+    display: flex;
+    margin-top: 25px;
+}
+
 .menus-section {
-    position: absolute;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    /* background-color: yellow; */
 }
 
+/* 
 .menus-content {
-    width: 100%;
-    /* background: red; */
-    height: 2500px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
 
-.menus-list {
-    width: 100%;
-    position: absolute;
-}
+} */
+
+
+
 
 .menus-list-categories {
     display: flex;
-    width: 100%;
     height: 60px;
     background-color: var(--primary-bg);
     gap: 20px;
+    width: 100%;
 }
 
 .menus-list-cat-container {
@@ -52,8 +52,9 @@
 .menu {
     display: flex;
     justify-content: center;
-    width: 75%;
+    width: 100%;
     margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .menu-detail-container {
